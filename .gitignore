@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+env/
+venv/
+
+# Flask / local files
+instance/
+feedback.txt
+
+# System files
+.DS_Store
+*.sqlite3
+
