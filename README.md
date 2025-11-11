@@ -140,6 +140,3 @@ docker pull ashwinsajii/flask-feedback-app:latest
 
 ⭐ **If you liked this project, consider giving it a star!**
 
-
-Would you like me to help you create a **short GitHub project description + tags** (the ones under the repo title like “docker”, “flask”, “devops”)?
-They help recruiters *find* your repo when searching.
