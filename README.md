@@ -1,142 +1,255 @@
+# 📌 Flask Feedback App — DevOps Portfolio Project
 
-# 🐳 Flask Feedback Web App
-
-A lightweight **Flask-based feedback application** containerized using **Docker** and served with **Gunicorn**.  
-Includes a `/health` endpoint for automatic container health monitoring and supports persistent storage for user feedback.
-
----
-
-## 🚀 Run Locally (without Docker)
-
-```bash
-# Clone this repository
-git clone https://github.com/AshwinSajii/flask-feedback-app.git
-cd flask-feedback-app
-
-# (Optional) Create a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-python app.py
-````
-
-Then visit → [http://localhost:5000](http://localhost:5000)
+A simple Flask-based web application containerized with Docker and prepared for real-world DevOps workflows.  
+This project demonstrates **Linux fundamentals, containerization, Docker Hub usage, health checks, Git CLI workflow**, and serves as the foundation for future enhancements like CI/CD, Terraform deployment, Kubernetes, and monitoring.
 
 ---
 
-## 🐳 Run with Docker
+## 🚀 Live Demo (Coming Soon)
+➡️ *Once deployed on AWS EC2 or Kubernetes, add the public URL here.*
 
-```bash
-# Pull from Docker Hub
-docker pull ashwinsajii/flask-feedback-app:latest
+---
 
-# Run the container
-docker run -d -p 5000:5000 ashwinsajii/flask-feedback-app
+# 🧠 Project Overview
+
+This is a beginner-friendly Flask feedback application built to showcase DevOps skills rather than full-stack development.
+
+The project demonstrates:
+
+- Building and running a Flask app  
+- Dockerizing the app using a custom Dockerfile  
+- Publishing images to Docker Hub using CLI  
+- Health checks for container reliability  
+- Git/GitHub workflow entirely via command line  
+- Production-ready structure  
+- Future-ready for CI/CD, Terraform, and Kubernetes  
+
+This app will evolve into a **complete DevOps pipeline project**, starting from a simple Python app to a fully automated and cloud-deployed service.
+
+---
+
+# 🧰 Tech Stack
+
+### Backend
+- Python Flask  
+- HTML + Jinja templates  
+
+### DevOps / Infra
+- Docker  
+- Docker Hub  
+- Linux (Ubuntu)  
+- Git CLI  
+- Health checks  
+- (Upcoming) GitHub Actions, Terraform, AWS EC2, Nginx, Kubernetes  
+
+---
+
+# 🗂️ Project Structure
+
 ```
 
----
-
-## 📦 Example with Persistent Volume
-
-```bash
-docker run -d \
-  --name flask-feedback-app \
-  -p 5000:5000 \
-  -v "$(pwd)/feedback.txt":/home/appuser/app/feedback.txt \
-  ashwinsajii/flask-feedback-app
-```
-
-This ensures feedback data is saved on your host even after container restarts.
-
----
-
-## 🧠 Features
-
-* 🧩 **Flask Web App** – simple feedback form built with HTML & Python
-* ⚙️ **Gunicorn** – production-grade WSGI server
-* ❤️ **Health Check** – `/health` endpoint for container monitoring
-* 💾 **Persistent Volume** – save feedback data outside container
-* ☁️ **Portable** – runs identically on any environment (Linux, Windows, Cloud)
-
----
-
-## 🧱 Tech Stack
-
-| Tool                   | Purpose                 |
-| ---------------------- | ----------------------- |
-| **Python 3.12 (Slim)** | Base environment        |
-| **Flask**              | Backend framework       |
-| **Gunicorn**           | WSGI production server  |
-| **Docker**             | Containerization        |
-| **Ubuntu (WSL2)**      | Development environment |
-
----
-
-## 🩺 Health Check
-
-Docker automatically verifies the container health every 30 seconds using:
-
-```dockerfile
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
-  CMD curl -f http://127.0.0.1:5000/health || exit 1
-```
-
-You can manually check health status:
-
-```bash
-docker inspect --format='{{.State.Health.Status}}' flask-feedback-app
-```
-
----
-
-## 🧰 Project Structure
-
-```
 flask-feedback-app/
-│
 ├── app.py
-├── Dockerfile
-├── requirements.txt
-├── .dockerignore
-├── .gitignore
-│
 ├── templates/
 │   ├── index.html
-│   ├── feedback.html
-│   ├── thank_you.html
-│   └── view.html
-│
+│   └── feedback.html
+├── static/
+├── Dockerfile
+├── .dockerignore
+├── .gitignore
+├── requirements.txt
 └── README.md
-```
+
+````
 
 ---
 
-## 🧾 Docker Hub Image
+# 🧪 Features Implemented
 
-📦 Available publicly on Docker Hub:
-👉 [https://hub.docker.com/r/ashwinsajii/flask-feedback-app](https://hub.docker.com/r/ashwinsajii/flask-feedback-app)
+### ✔ Simple Flask Web App  
+Basic form-based feedback application.
 
-Pull the image:
+### ✔ Dockerized Application  
+- Custom Dockerfile  
+- Lightweight Python image  
+- Ready for production improvements  
+
+### ✔ Docker Hub Integration  
+Image pushed using **only Linux commands**, no manual UI upload.
+
+### ✔ Health Check Endpoint  
+`/health` returns:
+
+```json
+{ "status": "ok" }
+````
+
+Useful for Docker, Kubernetes, ECS, uptime checks, etc.
+
+### ✔ GitHub Managed via Terminal
+
+Repo initialized, committed, and pushed using Git CLI only.
+
+---
+
+# 🐳 Docker Usage
+
+### Build the image
 
 ```bash
-docker pull ashwinsajii/flask-feedback-app:latest
+docker build -t your-dockerhub-username/flask-feedback-app .
+```
+
+### Run the container
+
+```bash
+docker run -d -p 5000:5000 your-dockerhub-username/flask-feedback-app
+```
+
+### Push to Docker Hub
+
+```bash
+docker login
+docker tag flask-feedback-app your-dockerhub-username/flask-feedback-app:latest
+docker push your-dockerhub-username/flask-feedback-app:latest
 ```
 
 ---
 
-## 👤 Author
+# 🧪 Health Check
 
-**Ashwin Saji**
-💻 System Administrator | Aspiring Cloud & DevOps Engineer
+Check container health:
 
-[![GitHub](https://img.shields.io/badge/GitHub-ashwinsajii-181717?style=for-the-badge\&logo=github)](https://github.com/AshwinSajii)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ashwin%20Saji-0A66C2?style=for-the-badge\&logo=linkedin)](https://www.linkedin.com/in/ashwinsajii)
+```bash
+curl http://127.0.0.1:5000/health
+```
+
+Output:
+
+```json
+{ "status": "ok" }
+```
 
 ---
 
-⭐ **If you liked this project, consider giving it a star!**
+# 📸 Screenshots
 
+> Add later:
+>
+> * UI screenshot
+> * Terminal screenshot of Docker push
+> * Architecture diagram
+
+Place all images under `/assets/`.
+
+---
+
+# 🛠️ Planned Improvements (DevOps Roadmap)
+
+## Phase 1 — Complete (✓)
+
+* Flask app
+* Dockerfile
+* Docker Hub push
+* Repo via Git CLI
+* Health endpoint
+
+## Phase 2 — In Progress (⏳)
+
+* Improve Dockerfile
+* Add pytest test
+* Add docker-compose
+* Add screenshots & README polish
+
+## Phase 3 — Upcoming (🔥 DevOps Work)
+
+### 1️⃣ CI/CD Pipeline — GitHub Actions
+
+* Build image
+* Run tests
+* Push to Docker Hub
+* Auto-deploy to server
+
+### 2️⃣ Deploy to AWS EC2
+
+* Run Docker container on EC2
+* Optionally add Nginx reverse proxy
+
+### 3️⃣ Infrastructure as Code — Terraform
+
+* Provision EC2
+* Add security groups
+* Auto-deploy container using user data
+
+### 4️⃣ Kubernetes Deployment
+
+* Deployment + Service
+* Liveness/readiness probes
+* Optional Ingress / EKS
+
+### 5️⃣ Monitoring
+
+* Logging improvements
+* Prometheus metrics
+* Grafana dashboards
+
+---
+
+# 📡 Run Locally (No Docker)
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+App runs at:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+# 🧑‍💻 What I Learned
+
+* Flask basics
+* Dockerfile creation
+* Working with Docker Hub
+* Git CLI workflow
+* Creating a health check endpoint
+* Planning a full DevOps lifecycle
+* Understanding how to evolve a simple web app into a production-ready deployment
+
+---
+
+# 🔗 Links
+
+### GitHub Repo
+
+➡️ [https://github.com/AshwinSajii/flask-feedback-app](https://github.com/AshwinSajii/flask-feedback-app)
+
+### Docker Hub
+
+➡️ *[Add your Docker Hub repo link here](https://hub.docker.com/repository/docker/ashwinsajii/flask-feedback-app/general)*
+
+### LinkedIn
+
+➡️ [https://www.linkedin.com/in/ashwinsajii/](https://www.linkedin.com/in/ashwinsajii/)
+
+---
+
+# 🙌 Next Steps
+
+I will continue improving this project by adding:
+
+* CI/CD
+* Cloud deployment
+* Terraform
+* Kubernetes
+* Nginx reverse proxy
+* Monitoring & observability
+* Security best practices
+
+Stay tuned for updates!
+
+```
