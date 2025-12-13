@@ -1,45 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Thanks — Flask App</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    :root{--bg:#f6f9fc; --accent:#10b981; --card:#fff}
-    body{margin:0; font-family:Inter,Arial,Helvetica; background:linear-gradient(180deg,var(--bg),#eef7f3)}
-    .wrap{display:grid; place-items:center; height:100vh}
-    .card{background:var(--card); padding:36px 44px; border-radius:12px; box-shadow:0 10px 30px rgba(10,20,30,0.08); text-align:center}
-    .check{
-      width:92px; height:92px; border-radius:50%; display:inline-grid; place-items:center;
-      background:linear-gradient(180deg,#ecfdf5,#bbf7d0); margin-bottom:18px; transform-origin:center;
-      animation:pop 700ms ease-out forwards;
-    }
-    .check svg { width:56px; height:56px; display:block; }
-    h2{margin:0 0 10px; color:#0f172a}
-    p{margin:0 0 18px; color:#334155}
-    a{display:inline-block; padding:10px 16px; background:#007BFF; color:#fff; border-radius:8px; text-decoration:none}
-    @keyframes pop{
-      0%{transform:scale(0.2); opacity:0}
-      60%{transform:scale(1.08); opacity:1}
-      100%{transform:scale(1)}
-    }
-    @media (max-width:520px){ .card{padding:22px} }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="card">
-      <div class="check" aria-hidden="true">
-        <!-- simple check icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 6L9 17l-5-5"></path>
-        </svg>
-      </div>
-      <h2>Thanks for your feedback! 🙌</h2>
-      <p>Your response has been recorded.</p>
-      <a href="/">Back to Home</a>
-    </div>
-  </div>
-</body>
-</html>
-
+{% extends "base.html" %}
+{% block content %}
+<h2>Thank You!</h2>
+<p>Your feedback has been recorded.</p>
+{% endblock %}
